@@ -43,7 +43,7 @@ namespace TodoListApp.Controllers
             {
                 return NotFound();
             }
-            return View(item);// 傳這個項目到編輯畫面
+            return View(item);// 對應到View內的Edit.cshtml
         }
 
         [HttpPost]

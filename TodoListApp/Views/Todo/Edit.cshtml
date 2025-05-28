@@ -1,17 +1,21 @@
 ﻿@model TodoListApp.Models.TodoItem
 
-<h2>Edit Task</h2>
+<div class="TodoWrapper">
+    <h1>Edit Task</h1>
 
-<form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="Id" />
+    <form asp-action="Edit" method="post" class="TodoForm">
+        <input type="hidden" asp-for="Id" />
 
-    <div>
-        <label asp-for="Title"></label>
-        <input asp-for="Title" />
-    </div>
+        <div>
+            <label asp-for="Title" class="todo-label">Task</label>
+            <input asp-for="Title" class="todo-input" />
+            <button type="submit" class="todo-btn">Save</button>
+            <a asp-action="Index" class="todo-btn cancel-btn">Cancel</a>
+        </div>
 
-    <button type="submit">save</button>
-</form>
+        
+    </form>
+</div>
 
-<a asp-action="Index">cancel</a>
+
 
