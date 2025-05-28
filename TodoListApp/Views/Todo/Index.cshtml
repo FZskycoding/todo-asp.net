@@ -1,0 +1,20 @@
+﻿@model List<TodoListApp.Models.TodoItem>
+<h1>My Task</h1>
+
+<form asp-action="Add" method="post">
+    <input type="text" placeholder="task" name="title"/>
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @item.Title
+            <form asp-action="Delete" method="post" asp-controller="Todo" style="display:inline;">
+                <input type="hidden" name="id" value="@item.Id" />
+                <button type="submit">delete</button>
+            </form>
+        </li>
+    }
+</ul>
