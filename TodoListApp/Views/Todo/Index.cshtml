@@ -11,10 +11,16 @@
     {
         <li>
             @item.Title
-            <form asp-action="Delete" method="post" asp-controller="Todo" style="display:inline;">
+            <form asp-controller="Todo" asp-action="Delete" method="post" style="display:inline;">
                 <input type="hidden" name="id" value="@item.Id" />
                 <button type="submit">delete</button>
+     
             </form>
+            
+            <form asp-controller="Todo" asp-action="Edit" asp-route-id="@item.Id" method="get" style="display:inline;">
+                <button type="submit">edit</button>
+            </form>
+            
         </li>
     }
 </ul>

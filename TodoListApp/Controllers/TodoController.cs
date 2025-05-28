@@ -35,5 +35,26 @@ namespace TodoListApp.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            var item = todoList.FirstOrDefault(t => t.Id == id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return View(item);// 傳這個項目到編輯畫面
+        }
+
+        [HttpPost]
+        public IActionResult Edit(TodoItem updatedItem)
+        {
+            var item = todoList.FirstOrDefault(t => t.Id == updatedItem.Id);
+            if(item != null)
+            {
+                item.Title = updatedItem.Title;
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
