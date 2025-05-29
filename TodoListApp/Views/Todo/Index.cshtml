@@ -4,27 +4,29 @@
     <h1>Write your todo list!</h1>
 
     <form asp-action="Add" method="post" class="TodoForm">
-        <input type="text" placeholder="task" name="title" class="todo-input" />
-        <button type="submit" class="todo-btn">Add</button>
+        <div>
+            <input type="text" placeholder="task" name="title" class="todo-input" />
+            <button type="submit" class="todo-btn">Add</button>
+        </div>
+        
     </form>
-
-    <div class="todo-list">
-        @foreach (var item in Model)
+    @foreach (var item in Model)
         {
-            <div class="todo-item">
+            <div class="Todo">
                 <span class="todo-title">@item.Title</span>
                 <div class="todo-actions">
                     <form asp-controller="Todo" asp-action="Edit" asp-route-id="@item.Id" method="get">
-                        <button type="submit" class="todo-btn">Edit</button>
+                        <button type="submit" class="todo-btn">
+                            <i class="fas fa-pen-to-square"></i>
+                        </button>
                     </form>
                     <form asp-controller="Todo" asp-action="Delete" method="post">
                         <input type="hidden" name="id" value="@item.Id" />
-                        <button type="submit" class="todo-btn">Delete</button>
+                        <button type="submit" class="todo-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </form>
-
-                    
                 </div>
             </div>
         }
-    </div>
 </div>
